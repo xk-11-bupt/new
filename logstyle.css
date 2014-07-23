@@ -16,8 +16,9 @@ background:grey;
 }
 
 #query{
-width:600px;
-height:150px;
+vertical-align:middle;
+width:400px;
+height:auto;
 margin:100 auto;
 padding:10px;
 background:grey;
