@@ -6,36 +6,40 @@
 <body>
 
 <?php
-	//include 'query.php';
 	header("Content-type:text/html;charset=utf-8");
 	$dbs='视频素材';
 	$sql=$_POST['sql'].";";
+	
+	/*登陆数据库
+	 *用户名密码默认为：
+	 *root 123456
+	 */
 	$dbc = mysqli_connect('localhost',
 	'root',
 	'123456',
 	$dbs)
 	or die('Error connecting to MySQL server');
 	//选择数据库：视频素材
-	//echo $sql;
+	
 	//mysqli_select_db($dbc,$dbs)
 	//or die('Error selecting database');
 	//$query = "select* from 总表";
 	//if ($name && $passowrd){
-	//$sql = "SELECT * FROM 总表 WHERE users = '$name' and password='$passowrd'";
-	//echo $sql;
-	$res = mysqli_query($dbc,$sql);
-	//echo $res;
-	while($rows=mysqli_fetch_array($res,MYSQL_ASSOC)){
-	
-		//for($x=0;$x<count($rows);$x++) {
-		//	echo $rows[$x];
-		//	echo "<br>";
-		//}
-		foreach($rows as $value){
-			echo $value."<br/>";
+		echo $sql;
+		$res = mysqli_query($dbc,$sql);
+		if($res){
+		echo "<script language=javascript>alert('插入成功');
+		history.back();
+		</script>";
+		
 		}
-	}
-
+		else {
+			echo "<script language=javascript>alert('插入失败');
+			
+			</script>";
+			}
+		header("refresh:0;url=query.php");//跳转页面，注意路径
+		exit;
 			
 
 
