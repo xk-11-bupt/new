@@ -6,7 +6,7 @@
 <body>
 
 <?php
-	include 'query.php';
+	//include 'query.php';
 	header("Content-type:text/html;charset=utf-8");
 	$dbs='视频素材';
 	$sql=$_POST['sql'].";";
@@ -16,15 +16,22 @@
 	$dbs)
 	or die('Error connecting to MySQL server');
 	//选择数据库：视频素材
-	
+	//echo $sql;
 	//mysqli_select_db($dbc,$dbs)
 	//or die('Error selecting database');
 	//$query = "select* from 总表";
 	//if ($name && $passowrd){
 	//$sql = "SELECT * FROM 总表 WHERE users = '$name' and password='$passowrd'";
 	$res = mysqli_query($dbc,$sql);
-	while($rows=mysqli_fetch_array($res)){
-		echo $rows;
+	while($rows=mysqli_fetch_array($res,MYSQL_ASSOC)){
+	
+		//for($x=0;$x<count($rows);$x++) {
+		//	echo $rows[$x];
+		//	echo "<br>";
+		//}
+		foreach($rows as $value){
+			echo $value."<br/>";
+		}
 	}
 
 			

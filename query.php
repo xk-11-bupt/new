@@ -7,6 +7,7 @@
 <body>
 <?php
 	$acol=array("编号","题名","主题","参与人员","拍摄地点","覆盖时间","服装","版本","画面内容","出版单位","格式","语种","声道","字幕","色彩","标","时常","日期","责任方式","储存位置");
+	$result="result.php";
 	if(isset($_POST['submit'])){		
 		$output_form = true;
 		$condition=true;
@@ -17,10 +18,10 @@
 			$col="col".$n;
 			if(!empty($_POST[$col])&&$condition){
 				$condition=false;
-				$_POST['sql']="select* from 总表 where $acol[$n]='$_POST[$col]'";
+				$_POST['sql']="select* from 总表 where $acol[$n] like '%$_POST[$col]%'";
 			}
 			else if (!empty($_POST[$col])){
-				$_POST['sql']=$_POST['sql']."and where $acol[$n]='$_POST[$col]'";
+				$_POST['sql']=$_POST['sql']."and where $acol[$n] like '%$_POST[$col]%'";
 			}
 		}
 	}
@@ -33,7 +34,11 @@
 	
 	if(!empty($_POST['sql'])){
 		//echo $_POST['sql'];
-		header("refresh:0;url=result.php");//跳转页面，注意路径
+		//header("refresh:0;url=result.php");//跳转页面，注意路径
+		?>
+		<form method="post" action="<?php echo htmlspecialchars($result);?>">
+		<input type="hidden" name="sql" value="<?php echo htmlspecialchars($_POST['sql']);?>"/>
+		<?php
 	}
 	if($output_form){
 	?>
