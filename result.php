@@ -22,7 +22,7 @@
 	//$query = "select* from 总表";
 	//if ($name && $passowrd){
 	//$sql = "SELECT * FROM 总表 WHERE users = '$name' and password='$passowrd'";
-	//echo $sql;
+	echo $sql;
 	$res = mysqli_query($dbc,$sql);
 	//echo $res;
 	while($rows=mysqli_fetch_array($res,MYSQL_ASSOC)){

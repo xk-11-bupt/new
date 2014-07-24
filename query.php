@@ -7,12 +7,13 @@
 <body>
 <?php
 	$acol=array("编号","题名","主题","参与人员","拍摄地点","覆盖时间","服装","版本","画面内容","出版单位","格式","语种","声道","字幕","色彩","标","时长","日期","责任方式","储存位置");
+	//print $acol;
 	$result="result.php";
 	$insert="queryres.php";
 	//下面开始是查询脚本
 	if(isset($_POST['submit'])){		
 		$output_form = true;
-		$condition=true;
+		$condition=true;//see if it is  the first time
 		//$test="col"."0";
 		//echo $_POST[$test];
 		//judge if any material entered
@@ -42,6 +43,7 @@
 		?>
 		<form method="post" action="<?php echo htmlspecialchars($result);?>">
 		<input type="hidden" name="sql" value="<?php echo htmlspecialchars($_POST['sql']);?>"/>
+		</form>
 		<?php
 	}
 	//查询脚本到此为止
@@ -65,9 +67,13 @@
 			}
 		}
 		$sql=$sql.")";
+		$output_form=false;
 			?>
+			<p>检查无误后请点击确定，数据将提交，</p>
 		<form method="post" action="<?php echo htmlspecialchars($insert);?>">
-		<input type="hidden" name="sql" value="<?php echo htmlspecialchars($sql);?>"/>
+		<input type="text" name="sql" value="<?php echo htmlspecialchars($sql);?>"/></br>
+		<input type="submit" value="确定"><input type="button" value="取消" onclick="history.back();">
+		</form>
 		<?php
 	}
 	
@@ -117,8 +123,8 @@
 <input type="text" id="题名" name="col18"/></br>
 <label for="题名">储存位置：</label>
 <input type="text" id="题名" name="col19"/></br>
-<input type="submit" value="确定" name="submit"/>
 <input type="submit" value="插入新数据" name="insert"/>
+<input type="submit" value="确定" name="submit"/>
 </form>
 
 </div>
