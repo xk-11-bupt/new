@@ -7,6 +7,7 @@
 
 <?php
 	header("Content-type:text/html;charset=utf-8");
+	require_once("vardata.php");
 	$acol=array("编号","题名","主题","参与人员","拍摄地点","覆盖时间","服装","版本","画面内容","出版单位","格式","语种","声道","字幕","色彩","标","时长","日期","责任方式","储存位置");
 	$dbs='视频素材';
 	//下面开始是查询脚本
@@ -33,13 +34,15 @@
 		echo "<script language=javascript>alert('请输入查询内容');
 		history.back();
 		</script>";
-		}
+	}
 	//查询脚本到此为止
-	//
-	//
-	//
+
+
 	//下面是关于数据插入的脚本
 	if(isset($_POST['insert'])){
+		//用JS向用户确认是否需要插入
+		
+			//拼接sql语句
 		$sql="INSERT INTO `总表` (`题名`";
 		for($n=2;$n<20;$n++){
 			$sql=$sql.",`$acol[$n]`";	
@@ -55,18 +58,49 @@
 			}
 		}
 		$sql=$sql.")";
+		$insert=false;
+		$query=false;
+	}
+	//询问用户是否插入这个数据
+	 if(!$query&&!$insert){
+	 echo '<table id="customers"><tr>';
+		foreach($acol as $column){
+		echo "<th>$column</th>";
+		}	
+		echo "</tr>";
+		$insArr[0]="";
+		for ($n=1;$n<20;$n++){
+			$temp="col".$n;
+			$insArr[$n]=$_POST[$temp];
+		}
+		echo "<tr>";
+		foreach($insArr as $coll){
+			echo "<td>".$coll."</td>";
+		}
+		echo "</tr></tabble>";
+		echo 
+			'</br><p>确认插入上述数据吗？</p></br>
+			<form action="result.php" method="post">
+			<input type="submit" value="确定" name="sql">
+			<input type="button" value="后退" onclick="history.back();">';
+	 }
+	if(isset($_POST['sql'])){
+		$sql=$_POST['sql'];
 		$insert=true;
 		$query=false;
 	}
+	//插入脚本到此为止
+	
 	//连接数据库	
-	$dbc = mysqli_connect('localhost',
-	'root',
-	'123456',
+	if($query||$insert){
+	$dbc = mysqli_connect($DB_ADDR,
+	$DB_USER,
+	$DB_PSW,
 	$dbs)
 	or die('Error connecting to MySQL server');
-	//for debug 
-	//echo $sql;
 	$res = mysqli_query($dbc,$sql);
+
+	//mysqlquery($sql);
 	//显示查询结果
 	if($query&&mysqli_num_rows($res)) {
 	echo '<table id="customers"><tr>';
@@ -93,21 +127,25 @@
 	}
 	//查询结果为空
 	if($query&&!mysqli_num_rows($res)){
+		mysqli_close($dbc);
 		echo "<script> alert('查询无结果'); history.back();</script> ";}
+		exit;
 	//显示插入结果
 	if($res&&$insert){
 		echo "<script language=javascript>alert('插入成功');
 		</script>";
+		mysqli_close($dbc);
 		header("refresh:0;url=query.php");//跳转页面，注意路径
 		exit;
 		}
 		
 	if(!$res&&$insert) {
-			echo "<script language=javascript>alert('插入失败');
-			history.back();
-			</script>";
+		mysqli_close($dbc);
+		echo "<script language=javascript>alert('插入失败');
+		history.back();
+		</script>";
 		exit;
 	}
 	 mysqli_close($dbc);
-	 
+	 }
 	 ?>
