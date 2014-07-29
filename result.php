@@ -69,11 +69,27 @@
 	$res = mysqli_query($dbc,$sql);
 	//显示查询结果
 	if($query&&mysqli_num_rows($res)) {
+	echo '<table id="customers"><tr>';
+	foreach($acol as $column){
+	echo "<th>$column</th>";
+	}
+	echo "</tr>";
+	$odd=true;
 		while($rows=mysqli_fetch_array($res,MYSQL_ASSOC)){
-			foreach($rows as $value){
-				echo $value."<br/>";
-			}
+		if($odd==true){
+			echo '<tr>';
+			$odd=false;
 		}
+		else{
+			echo '<tr class="alt">';
+			$odd=true;
+		}
+			foreach($rows as $value){
+				echo "<td>".$value."</td>";
+			}
+		echo '</tr></br>';
+		}
+	echo '</tabble>';
 	}
 	//查询结果为空
 	if($query&&!mysqli_num_rows($res)){
