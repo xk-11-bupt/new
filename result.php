@@ -11,6 +11,8 @@
 	$insert=false;
 	$query=false;
 	$acol=array("编号","题名","主题","参与人员","拍摄地点","覆盖时间","服装","版本","画面内容","出版单位","格式","语种","声道","字幕","色彩","标","时长","日期","责任方式","储存位置");
+	//testdata below
+	$_POST['start']=0;
 	//下面开始是查询脚本
 	if(isset($_POST['submit'])){
 		$insert=false;
@@ -31,12 +33,13 @@
 		}
 		//检查是否没有成功赋值过，是则返回上一页
 		if(isset($_POST['submit'])&&$condition){
-			echo "<script language=javascript>alert('请输入查询内容');
-			history.back();
-			</script>";
+			//echo "<script language=javascript>alert('请输入查询内容');
+			//history.back();
+			//</script>";
+			$sql="select* from 总表"
 		}
-		$sql=$sql.";";
-		echo $sql;
+		$sql=$sql."limit $_POST['start'],$listOnePage;";
+		//echo $sql;
 	}
 	//查询脚本到此为止
 	//下面是关于数据插入的脚本
@@ -80,7 +83,8 @@
 		<div id="confirm">
 		<h4>确认插入上述数据吗？</h4>
 			<form method="post"  action="result.php">
-			<input type="submit" value="确定" name="sql"/>
+			<input type="hidden" value="<?php echo $sql?> " name="sql">
+			<input type="submit" value="确定" />
 			<input type="button" value="后退" onclick="history.back();"/>
 			</form>
 		</div>
@@ -104,7 +108,7 @@
 	or die('Error connecting to MySQL server');
 	$res = mysqli_query($dbc,$sql);
 	//显示查询结果
-	if($query&&mysqli_num_rows($res)) {
+	if($query&&@mysqli_num_rows($res)) {
 	echo '<table id="resTable"><tr>';
 	foreach($acol as $column){
 	echo "<th>$column</th>";
@@ -125,23 +129,22 @@
 			}
 		echo '</tr></br>';
 		}
-	echo '</tabble>';
+	echo '</table>';
+	echo '<input type="button" value="后退" onclick="history.back()"/>';
 	}
 	//查询结果为空
-	if($query&&!mysqli_num_rows($res)){
-		mysqli_close($dbc); 
-		echo "<script> alert('查询无结果'); history.back();</script> ";}
-		exit;
+	if($query&&!@mysqli_num_rows($res)){
+		//mysqli_close($dbc); 
+		echo "<script> alert('查询无结果'); history.back();</script> ";
+		exit;}
 	//显示插入结果
 	if($res&&$insert){
 		echo "<script language=javascript>alert('插入成功');
 		</script>";
-		mysqli_close($dbc);
 		header("refresh:0;url=query.php");//跳转页面，注意路径
 		exit;
 		}
 	if(!$res&&$insert) {
-		mysqli_close($dbc);
 		echo "<script language=javascript>alert('插入失败');
 		history.back();
 		</script>";

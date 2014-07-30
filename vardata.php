@@ -12,7 +12,7 @@
 	 *mysqli_close($dbc);
 	 
 	 not for use for now;
-	 */
+	 
 	function mysqlquery($sql){
 		global $DB_ADDR,$DB_USER,$DB_PSW,$dbs;
 		$dbc = mysqli_connect($DB_ADDR,
@@ -23,4 +23,6 @@
 		$res = mysqli_query($dbc,$sql);
 		return $dbc;
 	}
+	*/
+	$listOnePage=3;
 ?>
