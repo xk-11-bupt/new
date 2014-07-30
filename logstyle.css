@@ -4,8 +4,7 @@
 	width:90px;
 	height:22px;
 }
-form {	
-	vertical-align:middle;}
+form {vertical-align:middle;}
 	
 #centre{
 width:300px;
@@ -23,21 +22,21 @@ margin:100 auto;
 padding:10px;
 background:grey;
 }
-#customers
+#resTable
   {
   font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
   width:100%;
   border-collapse:collapse;
   }
 
-#customers td, #customers th 
+#resTable td, #resTable th 
   {
   font-size:1em;
   border:1px solid #98bf21;
   padding:3px 7px 2px 7px;
   }
 
-#customers th 
+#resTable th 
   {
   font-size:1.1em;
   text-align:left;
@@ -47,7 +46,7 @@ background:grey;
   color:#ffffff;
   }
 
-#customers tr.alt td 
+#resTable tr.alt td 
   {
   color:#000000;
   background-color:#EAF2D3;

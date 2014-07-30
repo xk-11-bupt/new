@@ -9,7 +9,7 @@
 	header("Content-type:text/html;charset=utf-8");
 	require_once("vardata.php");
 	$acol=array("编号","题名","主题","参与人员","拍摄地点","覆盖时间","服装","版本","画面内容","出版单位","格式","语种","声道","字幕","色彩","标","时长","日期","责任方式","储存位置");
-	$dbs='视频素材';
+	$sql="";
 	//下面开始是查询脚本
 	if(isset($_POST['submit'])){		
 		$insert=false;
@@ -61,9 +61,9 @@
 		$insert=false;
 		$query=false;
 	}
-	//询问用户是否插入这个数据
+	//询问用户是否插入这个数据Z
 	 if(!$query&&!$insert){
-	 echo '<table id="customers"><tr>';
+	 echo '<table id="resTable"><tr>';
 		foreach($acol as $column){
 		echo "<th>$column</th>";
 		}	
@@ -103,7 +103,7 @@
 	//mysqlquery($sql);
 	//显示查询结果
 	if($query&&mysqli_num_rows($res)) {
-	echo '<table id="customers"><tr>';
+	echo '<table id="resTable"><tr>';
 	foreach($acol as $column){
 	echo "<th>$column</th>";
 	}
