@@ -11,8 +11,6 @@
 	$insert=false;
 	$query=false;
 	$acol=array("编号","题名","主题","参与人员","拍摄地点","覆盖时间","服装","版本","画面内容","出版单位","格式","语种","声道","字幕","色彩","标","时长","日期","责任方式","储存位置");
-	//testdata below
-	$_POST['start']=0;
 	//下面开始是查询脚本
 	if(isset($_POST['submit'])){
 		$insert=false;
@@ -33,12 +31,11 @@
 		}
 		//检查是否没有成功赋值过，是则返回上一页
 		if(isset($_POST['submit'])&&$condition){
-			//echo "<script language=javascript>alert('请输入查询内容');
-			//history.back();
-			//</script>";
-			$sql="select* from 总表"
+			echo "<script language=javascript>alert('请输入查询内容');
+			history.back();
+			</script>";
 		}
-		$sql=$sql."limit $_POST['start'],$listOnePage;";
+		$sql=$sql.";";
 		//echo $sql;
 	}
 	//查询脚本到此为止
@@ -94,6 +91,7 @@
 	 //本页面提交的插入命令
 	if(isset($_POST['sql'])){
 		$sql=$_POST['sql'];
+		echo $sql;
 		$insert=true;
 		$query=false;
 	}
