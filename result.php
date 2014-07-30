@@ -103,15 +103,14 @@
 	//mysqlquery($sql);
 	//显示查询结果
 	if($query&&mysqli_num_rows($res)) {
-<<<<<<< HEAD
+
 	echo '<table id="resTable"><tr>';
 	foreach($acol as $column){
 	echo "<th>$column</th>";
 	}
 	echo "</tr>";
 	$odd=true;
-=======
->>>>>>> parent of a6f53a3... test 1.1
+
 		while($rows=mysqli_fetch_array($res,MYSQL_ASSOC)){
 			foreach($rows as $value){
 				echo $value."<br/>";

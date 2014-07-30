@@ -7,7 +7,7 @@
 <body>
 
 <?php
-	//本页面脚本内容大部分将在result中实现，最后调试阶段可改写为html文件。
+	
 	$acol=array("编号","题名","主题","参与人员","拍摄地点","覆盖时间","服装","版本","画面内容","出版单位","格式","语种","声道","字幕","色彩","标","时长","日期","责任方式","储存位置");
 	//print $acol;
 	$result="result.php";
@@ -57,8 +57,8 @@
 <input type="text" id="题名" name="col18"/></br>
 <label for="题名">储存位置：</label>
 <input type="text" id="题名" name="col19"/></br>
-<input type="submit" value="插入新数据" name="insert"/>
 <input type="submit" value="确定" name="submit"/>
+<input type="submit" value="插入新数据" name="insert"/>
 </form>
 
 </div>
