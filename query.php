@@ -57,9 +57,8 @@
 <input type="text" id="题名" name="col18"/></br>
 <label for="题名">储存位置：</label>
 <input type="text" id="题名" name="col19"/></br>
-<input type="submit" value="确定" name="submit"/>
 <input type="submit" value="插入新数据" name="insert"/>
-
+<input type="submit" value="确定" name="submit"/>
 </form>
 
 </div>

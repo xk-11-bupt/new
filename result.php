@@ -103,27 +103,20 @@
 	//mysqlquery($sql);
 	//显示查询结果
 	if($query&&mysqli_num_rows($res)) {
+<<<<<<< HEAD
 	echo '<table id="resTable"><tr>';
 	foreach($acol as $column){
 	echo "<th>$column</th>";
 	}
 	echo "</tr>";
 	$odd=true;
+=======
+>>>>>>> parent of a6f53a3... test 1.1
 		while($rows=mysqli_fetch_array($res,MYSQL_ASSOC)){
-		if($odd==true){
-			echo '<tr>';
-			$odd=false;
-		}
-		else{
-			echo '<tr class="alt">';
-			$odd=true;
-		}
 			foreach($rows as $value){
-				echo "<td>".$value."</td>";
+				echo $value."<br/>";
 			}
-		echo '</tr></br>';
 		}
-	echo '</tabble>';
 	}
 	//查询结果为空
 	if($query&&!mysqli_num_rows($res)){
