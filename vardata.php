@@ -1,6 +1,6 @@
 <?php
 	header("Content-type:text/html;charset=utf-8");
-	$DB_ADDR='192.168.1.115';//alter as need
+	$DB_ADDR='localhost';//alter as need
 	$DB_USER='root';
 	$DB_PSW='123456';
 	$dbs='视频素材';
@@ -12,7 +12,7 @@
 	 *mysqli_close($dbc);
 	 
 	 not for use for now;
-	 
+	 */
 	function mysqlquery($sql){
 		global $DB_ADDR,$DB_USER,$DB_PSW,$dbs;
 		$dbc = mysqli_connect($DB_ADDR,
@@ -23,5 +23,4 @@
 		$res = mysqli_query($dbc,$sql);
 		return $dbc;
 	}
-	*/
 ?>
