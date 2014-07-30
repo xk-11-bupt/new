@@ -7,7 +7,7 @@
 
 <?php
 	header("Content-type:text/html;charset=utf-8");
-	$dbs='视频素材';
+	require_once("vardata.php");
 	$name=$_POST['name'];
 	$passowrd=$_POST['password'];
 	
@@ -15,16 +15,12 @@
 	 *用户名密码默认为：
 	 *root 123456
 	 */
-	$dbc = mysqli_connect('localhost',
-	'root',
-	'123456',
+	$dbc = mysqli_connect($DB_ADDR,
+	$DB_USER,
+	$DB_PSW,
 	$dbs)
 	or die('Error connecting to MySQL server');
-	//选择数据库：视频素材
 	
-	//mysqli_select_db($dbc,$dbs)
-	//or die('Error selecting database');
-	//$query = "select* from 总表";
 	if ($name && $passowrd){
 		$sql = "SELECT * FROM user WHERE users = '$name' and password='$passowrd'";
 		$res = mysqli_query($dbc,$sql);
