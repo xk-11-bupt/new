@@ -105,8 +105,12 @@
 	if($query&&mysqli_num_rows($res)) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	echo '<table id="resTable"><tr>';
+=======
+	echo '<table id="customers"><tr>';
+>>>>>>> parent of 6176b4b... test1.3
 =======
 	echo '<table id="customers"><tr>';
 >>>>>>> parent of 6176b4b... test1.3
