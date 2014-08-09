@@ -31,11 +31,13 @@
 		}
 		//检查是否没有成功赋值过，是则返回上一页
 		if(isset($_POST['submit'])&&$condition){
-			echo "<script language=javascript>alert('请输入查询内容');
-			history.back();
-			</script>";
+			//echo "<script language=javascript>alert('请输入查询内容');
+			//history.back();
+			//</script>";
+			//exit;
+			$sql='select* from 总表;';
 		}
-		$sql=$sql.";";
+		else{$sql=$sql.";";}
 		//echo $sql;
 	}
 	//查询脚本到此为止
@@ -91,7 +93,6 @@
 	 //本页面提交的插入命令
 	if(isset($_POST['sql'])){
 		$sql=$_POST['sql'];
-		echo $sql;
 		$insert=true;
 		$query=false;
 	}
@@ -128,7 +129,7 @@
 		echo '</tr></br>';
 		}
 	echo '</table>';
-	echo '<input type="button" value="后退" onclick="history.back()"/>';
+	echo '<input type="button" value="返回" onclick="history.back()"/>';
 	}
 	//查询结果为空
 	if($query&&!@mysqli_num_rows($res)){

@@ -1,5 +1,3 @@
-
-<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -70,7 +68,7 @@
 <input type="text" name="col18"/></br>
 <label for="题名">储存位置：</label>
 <input type="text" name="col19"/></br>
-<input type="submit" value="确定" name="submit"/>
+<input type="submit" value="查询" name="submit"/>
 <input type="submit" value="插入新数据" name="insert"/>
 </form>
 
