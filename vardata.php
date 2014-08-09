@@ -1,6 +1,6 @@
 <?php
 	header("Content-type:text/html;charset=utf-8");
-	$DB_ADDR='192.168.1.115';//alter as need
+	$DB_ADDR='localhost';//alter as need
 	$DB_USER='root';
 	$DB_PSW='123456';
 	$dbs='视频素材';
@@ -24,4 +24,5 @@
 		return $dbc;
 	}
 	*/
+	$listOnePage=3;
 ?>

@@ -4,7 +4,8 @@
 	width:90px;
 	height:22px;
 }
-form {vertical-align:middle;}
+form {	
+	vertical-align:middle;}
 	
 #centre{
 width:300px;
@@ -14,13 +15,16 @@ padding:10px;
 background:grey;
 }
 
-#query{
+#query, #confirm{
 vertical-align:middle;
 width:400px;
 height:auto;
 margin:100 auto;
 padding:10px;
 background:grey;
+}
+#confirm{
+	background:white;
 }
 #resTable
   {
