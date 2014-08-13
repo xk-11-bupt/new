@@ -1,11 +1,25 @@
 
-.input{
-	border:1px solid black;
-	width:90px;
-	height:22px;
+textarea{
+	resize:none;
+	width:20em;
+	vertical-align:middle;
+
 }
-form {vertical-align:middle;}
-	
+form label {
+  display: inline-block;
+  line-height:40px;
+  width:100px;
+  font-weight: bold;
+  vertical-align:middle;
+  text-align:right;
+}
+form input{
+	width:20em;
+}
+form input.noresize{
+	width:auto;
+}
+
 #centre{
 width:300px;
 height:150px;
@@ -13,14 +27,19 @@ margin:100 auto;
 padding:10px;
 background:grey;
 }
+.row lable{
+	height:80px;
+}
 
-#query{
-vertical-align:middle;
+ #query, #confirm{
 width:400px;
 height:auto;
 margin:100 auto;
 padding:10px;
-background:grey;
+background-color:#C3E7C3
+}
+#confirm{
+	background:white;
 }
 #resTable
   {

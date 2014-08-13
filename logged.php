@@ -15,7 +15,8 @@
 	 *用户名密码默认为：
 	 *root 123456
 	 */
-	$dbc = mysqli_connect($DB_ADDR,
+
+    $dbc = mysqli_connect($DB_ADDR,
 	$DB_USER,
 	$DB_PSW,
 	$dbs)
@@ -25,6 +26,7 @@
 		$sql = "SELECT * FROM user WHERE users = '$name' and password='$passowrd'";
 		$res = mysqli_query($dbc,$sql);
 		if($rows=mysqli_fetch_array($res)){
+			mysqli_close($dbc);
 			header("refresh:0;url=query.php");//跳转页面，注意路径
 			exit;
 		}
