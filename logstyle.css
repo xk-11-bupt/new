@@ -19,6 +19,9 @@ form input{
 form input.noresize{
 	width:auto;
 }
+#centre  input{
+width:auto;
+}
 
 #centre{
 width:300px;

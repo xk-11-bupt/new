@@ -6,7 +6,7 @@ if( !isset($_SERVER['PHP_AUTH_USER']) ||!isset($_SERVER['PHP_AUTH_PW'])  ){ //�
     //如果没有登录信息，就蹦出登录框
     exit('Error!');
 	}
-    $sql="select* from user where users = '".$_SERVER['PHP_AUTH_USER']."'and password ='".$_SERVER['PHP_AUTH_PW']."';";
+    $sql="select* from user where clearance =1 and users = '".$_SERVER['PHP_AUTH_USER']."'and password ='".$_SERVER['PHP_AUTH_PW']."';";
     $dbc = mysqli_connect($DB_ADDR,
 	$DB_USER,
 	$DB_PSW,
@@ -18,5 +18,7 @@ if	(@mysqli_num_rows($res)){
 }
 else{
     exit("<script>alert('wrong')</script>");
+	header('WWW-Authenticate: Basic realm="admin"');
+    header('HTTP/1.1 401 Unauthorized');
 }
 ?>

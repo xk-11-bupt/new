@@ -9,7 +9,7 @@
 <form action="logged.php" method="post" autocomplete="off">
 用户名: <input type="text" name="name" /><br />
 密码: &nbsp;&nbsp;<input type="password" name="password" />
-<input type="submit" value="确定"/>
+</br><input type="submit" value="确定"/>
 </form>
 </div>
 </body>
